@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Erika ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #ff7eaa;
+  --dark-pink: #ed5c91;
+  --text: #633f4d;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: "DM Sans", sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, #fff7fa, #ffdcea);
+}
+
+/* BACKGROUND */
+
+.bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,.55);
+  animation: float 8s ease-in-out infinite;
+}
+
+.b1 {
+  width: 100px;
+  height: 100px;
+  left: 7%;
+  top: 13%;
+}
+
+.b2 {
+  width: 55px;
+  height: 55px;
+  right: 12%;
+  top: 20%;
+  animation-delay: 1s;
+}
+
+.b3 {
+  width: 130px;
+  height: 130px;
+  right: 4%;
+  bottom: 5%;
+  animation-delay: 2s;
+}
+
+.b4 {
+  width: 65px;
+  height: 65px;
+  left: 10%;
+  bottom: 10%;
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-24px);
+  }
+}
+
+/* MUSIC BUTTON */
+
+.music-btn {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 200;
+
+  width: 48px;
+  height: 48px;
+
+  border: 2px solid #ffc4d8;
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.9);
+  color: var(--dark-pink);
+
+  font-size: 21px;
+  cursor: pointer;
+
+  box-shadow: 0 8px 22px rgba(170,80,109,.15);
+
+  transition: .25s;
+}
+
+.music-btn:hover {
+  transform: scale(1.08);
+}
+
+.music-btn.playing {
+  animation: musicPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+  50% {
+    box-shadow:
+      0 0 0 8px rgba(255,179,203,.2),
+      0 8px 22px rgba(170,80,109,.15);
+  }
+}
+
+/* SCREEN */
+
+.screen {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 22px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.04);
+
+  transition: .7s ease;
+
+  z-index: 2;
+}
+
+.screen.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.container {
+  width: min(700px, 100%);
+  text-align: center;
+}
+
+.small {
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--dark-pink);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: clamp(44px, 9vw, 82px);
+  line-height: 1;
+  color: var(--dark-pink);
+}
+
+.script,
+.birthday-title {
+  font-family: Pacifico, cursive;
+  font-weight: 400;
+}
+
+.subtitle {
+  font-size: 17px;
+  color: #8d6675;
+  line-height: 1.7;
+
+  max-width: 500px;
+
+  margin: 20px auto 30px;
+}
+
+/* BUTTON */
+
+.btn {
+  border: 0;
+
+  background: var(--pink);
+  color: white;
+
+  padding: 15px 28px;
+
+  border-radius: 50px;
+
+  font: 700 15px "DM Sans";
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 25px rgba(255,126,170,.3);
+
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  background: var(--dark-pink);
+}
+
+.btn.secondary {
+  background: white;
+  color: var(--dark-pink);
+  border: 2px solid #ffc4d8;
+  box-shadow: none;
+}
+
+/* ENVELOPE */
+
+.envelope {
+  width: 115px;
+  height: 85px;
+
+  margin: 0 auto 28px;
+
+  position: relative;
+
+  animation: envelopeFloat 2.5s ease-in-out infinite;
+}
+
+.envbody {
+  position: absolute;
+  inset: 0;
+
+  background: #ff9fbd;
+
+  border-radius: 10px;
+
+  box-shadow: 0 15px 35px rgba(220,90,130,.25);
+}
+
+.flap {
+  position: absolute;
+
+  z-index: 2;
+
+  width: 0;
+  height: 0;
+
+  border-left: 57px solid transparent;
+  border-right: 57px solid transparent;
+  border-top: 48px solid #ffbdd2;
+}
+
+.envheart {
+  position: absolute;
+
+  z-index: 3;
+
+  left: 50%;
+  top: 48%;
+
+  transform: translate(-50%,-50%);
+
+  font-size: 27px;
+}
+
+@keyframes envelopeFloat {
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+/* BIRTHDAY */
+
+.birthday-title {
+  font-size: clamp(42px,9vw,82px);
+  color: var(--dark-pink);
+}
+
+.birthday-name {
+  font-size: clamp(52px,12vw,100px);
+  font-weight: 800;
+
+  color: var(--text);
+
+  line-height: 1;
+
+  margin: 5px 0 8px;
+}
+
+/* CAKE */
+
+.cake {
+  position: relative;
+
+  width: 220px;
+  height: 195px;
+
+  margin: 12px auto;
+}
+
+.plate {
+  position: absolute;
+
+  bottom: 8px;
+  left: 10px;
+
+  width: 200px;
+  height: 15px;
+
+  background: #ffb5cd;
+
+  border-radius: 50%;
+}
+
+.bottom {
+  position: absolute;
+
+  bottom: 21px;
+  left: 30px;
+
+  width: 160px;
+  height: 65px;
+
+  background: #ff8fb2;
+
+  border-radius: 12px 12px 20px 20px;
+}
+
+.middle {
+  position: absolute;
+
+  bottom: 76px;
+  left: 45px;
+
+  width: 130px;
+  height: 45px;
+
+  background: #fff0f6;
+
+  border-radius: 10px 10px 15px 15px;
+}
+
+.top {
+  position: absolute;
+
+  bottom: 114px;
+  left: 35px;
+
+  width: 150px;
+  height: 40px;
+
+  background: #ffb5cd;
+
+  border-radius: 50%;
+}
+
+.cream {
+  position: absolute;
+
+  bottom: 101px;
+  left: 45px;
+
+  width: 130px;
+  height: 25px;
+
+  background: white;
+
+  border-radius: 50%;
+}
+
+.candle {
+  position: absolute;
+
+  bottom: 134px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 13px;
+  height: 50px;
+
+  background: #ff79a5;
+
+  border-radius: 5px;
+}
+
+.candle:after {
+  content: "";
+
+  position: absolute;
+
+  width: 3px;
+  height: 10px;
+
+  background: #633f4d;
+
+  top: -8px;
+  left: 5px;
+}
+
+.flame {
+  position: absolute;
+
+  top: -35px;
+  left: 50%;
+
+  width: 20px;
+  height: 28px;
+
+  transform: translateX(-50%);
+
+  background: #ffd166;
+
+  border-radius: 50%;
+
+  box-shadow: 0 0 20px rgba(255,195,80,.8);
+
+  animation: flame .7s ease-in-out infinite alternate;
+}
+
+.flame.off {
+  display: none;
+}
+
+@keyframes flame {
+  to {
+    transform:
+      translateX(-50%)
+      scale(1.1)
+      rotate(3deg);
+  }
+}
+
+/* LETTER */
+
+.letter {
+  position: relative;
+
+  background: rgba(255,255,255,.94);
+
+  border-radius: 25px;
+
+  padding: 38px;
+
+  max-width: 590px;
+
+  margin: auto;
+
+  box-shadow: 0 25px 60px rgba(170,80,110,.15);
+
+  text-align: left;
+}
+
+.letter:before {
+  content: "♡";
+
+  position: absolute;
+
+  right: 25px;
+  top: 15px;
+
+  font-size: 30px;
+
+  color: #ffb0c9;
+}
+
+.letter h2 {
+  color: var(--dark-pink);
+
+  font-size: 28px;
+
+  margin-bottom: 20px;
+}
+
+.letter p {
+  font-size: 16px;
+
+  line-height: 1.85;
+
+  color: #755563;
+
+  margin-bottom: 14px;
+}
+
+.signature {
+  text-align: right;
+
+  font-family: Pacifico, cursive;
+
+  color: var(--dark-pink);
+
+  margin-top: 25px;
+
+  font-size: 20px;
+}
+
+/* WISHES */
+
+.wish-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2,1fr);
+
+  gap: 15px;
+
+  max-width: 600px;
+
+  margin: 30px auto;
+}
+
+.wish {
+  background: rgba(255,255,255,.9);
+
+  padding: 25px 15px;
+
+  border-radius: 22px;
+
+  box-shadow: 0 12px 30px rgba(170,80,110,.08);
+
+  transition: .3s;
+}
+
+.wish:hover {
+  transform: translateY(-5px);
+}
+
+.wish-icon {
+  font-size: 28px;
+
+  margin-bottom: 8px;
+}
+
+.wish h3 {
+  font-size: 15px;
+
+  margin-bottom: 5px;
+}
+
+.wish p {
+  font-size: 13px;
+
+  color: #92717e;
+}
+
+/* GIFT */
+
+.gift {
+  position: relative;
+
+  width: 150px;
+  height: 140px;
+
+  margin: 30px auto;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.gift:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.gift-box {
+  position: absolute;
+
+  bottom: 0;
+  left: 10px;
+
+  width: 130px;
+  height: 95px;
+
+  background: #ff86ac;
+
+  border-radius: 5px 5px 12px 12px;
+
+  box-shadow: 0 15px 30px rgba(220,90,130,.2);
+}
+
+.gift-lid {
+  position: absolute;
+
+  left: 2px;
+  top: 25px;
+
+  width: 146px;
+  height: 28px;
+
+  background: #ff6f9e;
+
+  border-radius: 7px;
+
+  z-index: 2;
+
+  transition: .7s;
+}
+
+.ribbon-v {
+  position: absolute;
+
+  left: 64px;
+  bottom: 0;
+
+  width: 22px;
+  height: 95px;
+
+  background: #ffd0df;
+
+  z-index: 1;
+}
+
+.ribbon-h {
+  position: absolute;
+
+  left: 10px;
+  top: 57px;
+
+  width: 130px;
+  height: 20px;
+
+  background: #ffd0df;
+
+  z-index: 1;
+}
+
+.gift.open .gift-lid {
+  transform: translateY(-65px) rotate(-8deg);
+}
+
+/* FINAL */
+
+.final-heart {
+  font-size: 75px;
+
+  animation: beat 1.3s infinite;
+
+  margin-bottom: 10px;
+}
+
+@keyframes beat {
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.final-message {
+  font-size: 18px;
+
+  line-height: 1.8;
+
+  max-width: 500px;
+
+  margin: 20px auto 30px;
+
+  color: #755563;
+}
+
+.from {
+  font-family: Pacifico, cursive;
+
+  color: var(--dark-pink);
+
+  font-size: 22px;
+}
+
+/* CONFETTI */
+
+.confetti {
+  position: fixed;
+
+  top: -20px;
+
+  z-index: 100;
+
+  pointer-events: none;
+
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform:
+      translateY(110vh)
+      rotate(720deg);
+  }
+}
+
+/* HEART */
+
+.heart {
+  position: fixed;
+
+  bottom: -30px;
+
+  pointer-events: none;
+
+  z-index: 1;
+
+  animation: heartup linear forwards;
+
+  opacity: .7;
+}
+
+@keyframes heartup {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: .8;
+  }
+
+  100% {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .letter {
+    padding: 27px 22px;
+  }
+
+  .letter h2 {
+    font-size: 24px;
+  }
+
+  .letter p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .wish-grid {
+    gap: 10px;
+  }
+
+  .wish {
+    padding: 20px 10px;
+  }
+
+  .wish-icon {
+    font-size: 24px;
+  }
+
+  .wish h3 {
+    font-size: 13px;
+  }
+
+  .wish p {
+    font-size: 11px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIK -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+<button
+  id="musicBtn"
+  class="music-btn"
+  onclick="toggleMusic()">
+  ♫
+</button>
+
+<!-- BACKGROUND -->
+
+<div class="bg">
+  <div class="bubble b1"></div>
+  <div class="bubble b2"></div>
+  <div class="bubble b3"></div>
+  <div class="bubble b4"></div>
+</div>
+
+
+<!-- SCREEN 1 -->
+
+<section class="screen active" id="s1">
+
+  <div class="container">
+
+    <div class="envelope">
+      <div class="envbody"></div>
+      <div class="flap"></div>
+      <div class="envheart">♡</div>
+    </div>
+
+    <div class="small">
+      a little surprise for
+    </div>
+
+    <h1 class="script">
+      Erika
+    </h1>
+
+    <p class="subtitle">
+      Aku punya sesuatu kecil buat kamu...
+      <br>
+      Tapi kamu harus buka sendiri. 👀
+    </p>
+
+    <button class="btn" onclick="go(2)">
+      Buka Kejutan ♡
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- SCREEN 2 -->
+
+<section class="screen" id="s2">
+
+  <div class="container">
+
+    <div class="small">
+      today is your special day
+    </div>
+
+    <div class="birthday-title">
+      Happy Birthday
+    </div>
+
+    <div class="birthday-name">
+      ERIKA
+    </div>
+
+    <div class="cake">
+
+      <div class="plate"></div>
+      <div class="bottom"></div>
+      <div class="middle"></div>
+      <div class="top"></div>
+      <div class="cream"></div>
+
+      <div class="candle">
+        <div class="flame" id="flame"></div>
+      </div>
+
+    </div>
+
+    <p class="subtitle">
+      Make a wish dulu... ✨
+    </p>
+
+    <button class="btn" onclick="blow()">
+      Tiup Lilin 🎂
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- SCREEN 3 -->
+
+<section class="screen" id="s3">
+
+  <div class="container">
+
+    <div class="letter">
+
+      <h2>
+        💌 A little letter for you
+      </h2>
+
+      <p>
+        Hai Erika! 🌷
+      </p>
+
+      <p>
+        Selamat ulang tahun yaa!
+        Semoga di umur yang baru ini kamu
+        selalu dikelilingi hal-hal baik,
+        orang-orang baik, dan tentunya
+        banyak kebahagiaan.
+      </p>
+
+      <p>
+        Semoga semua hal yang kamu semogakan
+        pelan-pelan bisa jadi kenyataan.
+        Jangan lupa selalu jaga diri,
+        jangan terlalu sering overthinking,
+        dan tetap jadi Erika yang aku kenal. ♡
+      </p>
+
+      <p>
+        Terima kasih sudah menjadi teman
+        yang menyenangkan.
+        Semoga persahabatan kita tetap awet
+        dan kita punya lebih banyak cerita
+        lucu untuk diingat nanti. 😭
+      </p>
+
+      <div class="signature">
+        — your bestie ♡
+      </div>
+
+    </div>
+
+    <br>
+
+    <button class="btn" onclick="go(4)">
+      Lanjut ♡
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- SCREEN 4 -->
+
+<section class="screen" id="s4">
+
+  <div class="container">
+
+    <div class="small">
+      my little wishes for you
+    </div>
+
+    <h1 class="script">
+      For Erika 🌸
+    </h1>
+
+    <div class="wish-grid">
+
+      <div class="wish">
+        <div class="wish-icon">✨</div>
+        <h3>Happiness</h3>
+        <p>
+          Semoga selalu punya alasan
+          untuk tersenyum.
+        </p>
+      </div>
+
+      <div class="wish">
+        <div class="wish-icon">🌷</div>
+        <h3>Good Things</h3>
+        <p>
+          Semoga hal-hal baik selalu
+          datang kepadamu.
+        </p>
+      </div>
+
+      <div class="wish">
+        <div class="wish-icon">💫</div>
+        <h3>Success</h3>
+        <p>
+          Semoga semua impianmu
+          perlahan tercapai.
+        </p>
+      </div>
+
+      <div class="wish">
+        <div class="wish-icon">💗</div>
+        <h3>Lots of Love</h3>
+        <p>
+          Semoga hidupmu selalu
+          penuh kasih sayang.
+        </p>
+      </div>
+
+    </div>
+
+    <button class="btn" onclick="go(5)">
+      Ada Satu Lagi... 🎁
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- SCREEN 5 -->
+
+<section class="screen" id="s5">
+
+  <div class="container">
+
+    <div class="small">
+      one last surprise
+    </div>
+
+    <h1 class="script">
+      For You 🎁
+    </h1>
+
+    <p class="subtitle">
+      Kayaknya masih ada satu hadiah kecil
+      yang belum kamu buka...
+    </p>
+
+    <div
+      class="gift"
+      id="gift"
+      onclick="openGift()">
+
+      <div class="gift-lid"></div>
+      <div class="gift-box"></div>
+      <div class="ribbon-v"></div>
+      <div class="ribbon-h"></div>
+
+    </div>
+
+    <p id="giftText" class="subtitle">
+      Klik hadiahnya 🎀
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- SCREEN 6 -->
+
+<section class="screen" id="s6">
+
+  <div class="container">
+
+    <div class="final-heart">
+      💗
+    </div>
+
+    <div class="small">
+      once again...
+    </div>
+
+    <div class="birthday-title">
+      Happy Birthday
+    </div>
+
+    <div class="birthday-name">
+      ERIKA!
+    </div>
+
+    <p class="final-message">
+      Semoga tahun ini menjadi salah satu
+      tahun terbaik dalam hidupmu.
+      <br><br>
+
+      Keep smiling, keep shining,
+      and stay being the cute Erika
+      that you are. 🌷
+
+      <br><br>
+
+      Jangan lupa bahagia hari ini.
+      Kamu pantas mendapatkan
+      banyak hal baik. ♡
+    </p>
+
+    <div class="from">
+      From your bestie ♡
+    </div>
+
+    <br><br>
+
+    <button
+      class="btn secondary"
+      onclick="location.reload()">
+
+      Ulangi Kejutan ↻
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<script>
+
+/* ==========================
+   MUSIC
+========================== */
+
+const bgMusic =
+  document.getElementById("bgMusic");
+
+const musicBtn =
+  document.getElementById("musicBtn");
+
+function startMusic() {
+
+  bgMusic.volume = 0.55;
+
+  bgMusic.play()
+    .then(() => {
+
+      musicBtn.classList.add("playing");
+
+      musicBtn.textContent = "♫";
+
+    })
+    .catch(() => {
+
+      console.log(
+        "Browser membutuhkan interaksi pengguna untuk memutar musik."
+      );
+
+    });
+
+}
+
+function toggleMusic() {
+
+  if (bgMusic.paused) {
+
+    startMusic();
+
+  } else {
+
+    bgMusic.pause();
+
+    musicBtn.classList.remove("playing");
+
+    musicBtn.textContent = "🔇";
+
+  }
+
+}
+
+
+/* ==========================
+   NAVIGATION
+========================== */
+
+let current = 1;
+
+function go(number) {
+
+  /*
+    Musik mulai ketika Erika
+    menekan tombol pertama.
+  */
+
+  if (current === 1 && number === 2) {
+
+    startMusic();
+
+  }
+
+  document
+    .getElementById("s" + current)
+    .classList.remove("active");
+
+  setTimeout(() => {
+
+    document
+      .getElementById("s" + number)
+      .classList.add("active");
+
+  }, 120);
+
+  current = number;
+
+}
+
+
+/* ==========================
+   BLOW CANDLE
+========================== */
+
+function blow() {
+
+  document
+    .getElementById("flame")
+    .classList.add("off");
+
+  createConfetti();
+
+  setTimeout(() => {
+
+    go(3);
+
+  }, 1700);
+
+}
+
+
+/* ==========================
+   GIFT
+========================== */
+
+let giftOpened = false;
+
+function openGift() {
+
+  if (giftOpened) return;
+
+  giftOpened = true;
+
+  document
+    .getElementById("gift")
+    .classList.add("open");
+
+  document
+    .getElementById("giftText")
+    .textContent =
+    "Yay! Kamu berhasil membuka semuanya! 💗";
+
+  createConfetti();
+
+  setTimeout(() => {
+
+    go(6);
+
+  }, 2100);
+
+}
+
+
+/* ==========================
+   CONFETTI
+========================== */
+
+function createConfetti() {
+
+  const symbols = [
+    "♡",
+    "✦",
+    "♥",
+    "✿",
+    "•"
+  ];
+
+  for (let i = 0; i < 80; i++) {
+
+    const confetti =
+      document.createElement("div");
+
+    confetti.className =
+      "confetti";
+
+    confetti.textContent =
+      symbols[
+        Math.floor(
+          Math.random() * symbols.length
+        )
+      ];
+
+    confetti.style.left =
+      Math.random() * 100 + "vw";
+
+    confetti.style.fontSize =
+      (Math.random() * 15 + 8) + "px";
+
+    confetti.style.color =
+      [
+        "#ff7eaa",
+        "#ed5c91",
+        "#ffb3cb",
+        "#d96b96",
+        "#ffffff"
+      ][
+        Math.floor(Math.random() * 5)
+      ];
+
+    confetti.style.animationDuration =
+      (Math.random() * 2 + 2) + "s";
+
+    confetti.style.animationDelay =
+      Math.random() * .4 + "s";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+
+      confetti.remove();
+
+    }, 5000);
+
+  }
+
+}
+
+
+/* ==========================
+   FLOATING HEARTS
+========================== */
+
+function createHeart() {
+
+  const heart =
+    document.createElement("div");
+
+  heart.className = "heart";
+
+  heart.textContent =
+    [
+      "♡",
+      "♥",
+      "♡",
+      "✿"
+    ][
+      Math.floor(Math.random() * 4)
+    ];
+
+  heart.style.left =
+    Math.random() * 100 + "vw";
+
+  heart.style.fontSize =
+    (Math.random() * 15 + 15) + "px";
+
+  heart.style.color =
+    [
+      "#ff7eaa",
+      "#ed5c91",
+      "#ffb3cb"
+    ][
+      Math.floor(Math.random() * 3)
+    ];
+
+  heart.style.animationDuration =
+    (Math.random() * 4 + 5) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+
+    heart.remove();
+
+  }, 9000);
+
+}
+
+setInterval(createHeart, 1200);
+
+</script>
+
+</body>
+</html>
